@@ -1,0 +1,912 @@
+{
+  "healthRegions": [
+    {
+      "HR_UID": 4832,
+      "health_region": "Calgary",
+      "health_region_esri": "Calgary Zone",
+      "pop": 1680755.0,
+      "province": "Alberta",
+      "province_full": "Alberta",
+      "province_short": "AB"
+    },
+    {
+      "HR_UID": 4833,
+      "health_region": "Central",
+      "health_region_esri": "Central Zone",
+      "pop": 479601.0,
+      "province": "Alberta",
+      "province_full": "Alberta",
+      "province_short": "AB"
+    },
+    {
+      "HR_UID": 4834,
+      "health_region": "Edmonton",
+      "health_region_esri": "Edmonton Zone",
+      "pop": 1443597.0,
+      "province": "Alberta",
+      "province_full": "Alberta",
+      "province_short": "AB"
+    },
+    {
+      "HR_UID": 4835,
+      "health_region": "North",
+      "health_region_esri": "North Zone",
+      "pop": 460964.0,
+      "province": "Alberta",
+      "province_full": "Alberta",
+      "province_short": "AB"
+    },
+    {
+      "HR_UID": 4831,
+      "health_region": "South",
+      "health_region_esri": "South Zone",
+      "pop": 306399.0,
+      "province": "Alberta",
+      "province_full": "Alberta",
+      "province_short": "AB"
+    },
+    {
+      "HR_UID": 591,
+      "health_region": "Fraser",
+      "health_region_esri": "Fraser Health",
+      "pop": 1902586.0,
+      "province": "BC",
+      "province_full": "British Columbia",
+      "province_short": "BC"
+    },
+    {
+      "HR_UID": 592,
+      "health_region": "Interior",
+      "health_region_esri": "Interior Health",
+      "pop": 805216.0,
+      "province": "BC",
+      "province_full": "British Columbia",
+      "province_short": "BC"
+    },
+    {
+      "HR_UID": 593,
+      "health_region": "Island",
+      "health_region_esri": "Vancouver Island Health",
+      "pop": 846030.0,
+      "province": "BC",
+      "province_full": "British Columbia",
+      "province_short": "BC"
+    },
+    {
+      "HR_UID": 594,
+      "health_region": "Northern",
+      "health_region_esri": "Northern Health",
+      "pop": 298068.0,
+      "province": "BC",
+      "province_full": "British Columbia",
+      "province_short": "BC"
+    },
+    {
+      "HR_UID": 595,
+      "health_region": "Vancouver Coastal",
+      "health_region_esri": "Vancouver  Coastal Health",
+      "pop": 1219436.0,
+      "province": "BC",
+      "province_full": "British Columbia",
+      "province_short": "BC"
+    },
+    {
+      "HR_UID": 4603,
+      "health_region": "Interlake-Eastern",
+      "health_region_esri": "Interlake-Eastern Regional Health Authority",
+      "pop": 133882.0,
+      "province": "Manitoba",
+      "province_full": "Manitoba",
+      "province_short": "MB"
+    },
+    {
+      "HR_UID": 4604,
+      "health_region": "Northern",
+      "health_region_esri": "Northern Regional Health Authority",
+      "pop": 75783.0,
+      "province": "Manitoba",
+      "province_full": "Manitoba",
+      "province_short": "MB"
+    },
+    {
+      "HR_UID": 4602,
+      "health_region": "Prairie Mountain",
+      "health_region_esri": "Prairie Mountain Health",
+      "pop": 171368.0,
+      "province": "Manitoba",
+      "province_full": "Manitoba",
+      "province_short": "MB"
+    },
+    {
+      "HR_UID": 4605,
+      "health_region": "Southern Health",
+      "health_region_esri": "Southern Health\u2014Sant\u00e9 Sud",
+      "pop": 208018.0,
+      "province": "Manitoba",
+      "province_full": "Manitoba",
+      "province_short": "MB"
+    },
+    {
+      "HR_UID": 4601,
+      "health_region": "Winnipeg",
+      "health_region_esri": "Winnipeg Regional Health Authority",
+      "pop": 780414.0,
+      "province": "Manitoba",
+      "province_full": "Manitoba",
+      "province_short": "MB"
+    },
+    {
+      "HR_UID": 1301,
+      "health_region": "Zone 1 (Moncton area)",
+      "health_region_esri": "Zone 1 (Moncton area)",
+      "pop": 222694.0,
+      "province": "New Brunswick",
+      "province_full": "New Brunswick",
+      "province_short": "NB"
+    },
+    {
+      "HR_UID": 1302,
+      "health_region": "Zone 2 (Saint John area)",
+      "health_region_esri": "Zone 2 (Saint John area)",
+      "pop": 176280.0,
+      "province": "New Brunswick",
+      "province_full": "New Brunswick",
+      "province_short": "NB"
+    },
+    {
+      "HR_UID": 1303,
+      "health_region": "Zone 3 (Fredericton area)",
+      "health_region_esri": "Zone 3 (Fredericton area)",
+      "pop": 183421.0,
+      "province": "New Brunswick",
+      "province_full": "New Brunswick",
+      "province_short": "NB"
+    },
+    {
+      "HR_UID": 1304,
+      "health_region": "Zone 4 (Edmundston area)",
+      "health_region_esri": "Zone 4 (Edmundston area)",
+      "pop": 48254.0,
+      "province": "New Brunswick",
+      "province_full": "New Brunswick",
+      "province_short": "NB"
+    },
+    {
+      "HR_UID": 1305,
+      "health_region": "Zone 5 (Campbellton area)",
+      "health_region_esri": "Zone 5 (Campbellton area)",
+      "pop": 25199.0,
+      "province": "New Brunswick",
+      "province_full": "New Brunswick",
+      "province_short": "NB"
+    },
+    {
+      "HR_UID": 1306,
+      "health_region": "Zone 6 (Bathurst area)",
+      "health_region_esri": "Zone 6 (Bathurst area)",
+      "pop": 76763.0,
+      "province": "New Brunswick",
+      "province_full": "New Brunswick",
+      "province_short": "NB"
+    },
+    {
+      "HR_UID": 1307,
+      "health_region": "Zone 7 (Miramichi area)",
+      "health_region_esri": "Zone 7 (Miramichi area)",
+      "pop": 44216.0,
+      "province": "New Brunswick",
+      "province_full": "New Brunswick",
+      "province_short": "NB"
+    },
+    {
+      "HR_UID": 1012,
+      "health_region": "Central",
+      "health_region_esri": "Central Regional Health Authority",
+      "pop": 91201.0,
+      "province": "NL",
+      "province_full": "Newfoundland and Labrador",
+      "province_short": "NL"
+    },
+    {
+      "HR_UID": 1011,
+      "health_region": "Eastern",
+      "health_region_esri": "Eastern Regional Health Authority",
+      "pop": 317664.0,
+      "province": "NL",
+      "province_full": "Newfoundland and Labrador",
+      "province_short": "NL"
+    },
+    {
+      "HR_UID": 1014,
+      "health_region": "Labrador-Grenfell",
+      "health_region_esri": "Labrador-Grenfell Regional Health Authority",
+      "pop": 36069.0,
+      "province": "NL",
+      "province_full": "Newfoundland and Labrador",
+      "province_short": "NL"
+    },
+    {
+      "HR_UID": 1013,
+      "health_region": "Western",
+      "health_region_esri": "Western Regional Health Authority",
+      "pop": 76608.0,
+      "province": "NL",
+      "province_full": "Newfoundland and Labrador",
+      "province_short": "NL"
+    },
+    {
+      "HR_UID": 1201,
+      "health_region": "Zone 1 - Western",
+      "health_region_esri": "Zone 1 - Western",
+      "pop": 199165.0,
+      "province": "Nova Scotia",
+      "province_full": "Nova Scotia",
+      "province_short": "NS"
+    },
+    {
+      "HR_UID": 1202,
+      "health_region": "Zone 2 - Northern",
+      "health_region_esri": "Zone 2 - Northern",
+      "pop": 148470.0,
+      "province": "Nova Scotia",
+      "province_full": "Nova Scotia",
+      "province_short": "NS"
+    },
+    {
+      "HR_UID": 1203,
+      "health_region": "Zone 3 - Eastern",
+      "health_region_esri": "Zone 3 - Eastern",
+      "pop": 162088.0,
+      "province": "Nova Scotia",
+      "province_full": "Nova Scotia",
+      "province_short": "NS"
+    },
+    {
+      "HR_UID": 1204,
+      "health_region": "Zone 4 - Central",
+      "health_region_esri": "Zone 4 - Central",
+      "pop": 461672.0,
+      "province": "Nova Scotia",
+      "province_full": "Nova Scotia",
+      "province_short": "NS"
+    },
+    {
+      "HR_UID": 6201,
+      "health_region": "Nunavut",
+      "health_region_esri": "Nunavut",
+      "pop": 38780.0,
+      "province": "Nunavut",
+      "province_full": "Nunavut",
+      "province_short": "NU"
+    },
+    {
+      "HR_UID": 6101,
+      "health_region": "NWT",
+      "health_region_esri": "Northwest Territories",
+      "pop": 44826.0,
+      "province": "NWT",
+      "province_full": "Northwest Territories",
+      "province_short": "NT"
+    },
+    {
+      "HR_UID": 3526,
+      "health_region": "Algoma",
+      "health_region_esri": "The District of Algoma Health Unit",
+      "pop": 117036.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3527,
+      "health_region": "Brant",
+      "health_region_esri": "Brant County Health Unit",
+      "pop": 151034.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3540,
+      "health_region": "Chatham-Kent",
+      "health_region_esri": "Chatham-Kent Health Unit",
+      "pop": 106091.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3530,
+      "health_region": "Durham",
+      "health_region_esri": "Durham Regional Health Unit",
+      "pop": 697355.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3558,
+      "health_region": "Eastern",
+      "health_region_esri": "The Eastern Ontario Health Unit",
+      "pop": 213064.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3533,
+      "health_region": "Grey Bruce",
+      "health_region_esri": "Grey Bruce Health Unit",
+      "pop": 173372.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3534,
+      "health_region": "Haldimand-Norfolk",
+      "health_region_esri": "Haldimand-Norfolk Health Unit",
+      "pop": 119146.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3535,
+      "health_region": "Haliburton Kawartha Pineridge",
+      "health_region_esri": "Haliburton, Kawartha, Pine Ridge District Health Unit",
+      "pop": 189982.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3536,
+      "health_region": "Halton",
+      "health_region_esri": "Halton Regional Health Unit",
+      "pop": 596363.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3537,
+      "health_region": "Hamilton",
+      "health_region_esri": "City of Hamilton Health Unit",
+      "pop": 574263.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3538,
+      "health_region": "Hastings Prince Edward",
+      "health_region_esri": "Hastings and Prince Edward Counties Health Unit",
+      "pop": 170793.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3539,
+      "health_region": "Huron Perth",
+      "health_region_esri": "Huron Perth Public Health Unit",
+      "pop": 144801.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3541,
+      "health_region": "Kingston Frontenac Lennox & Addington",
+      "health_region_esri": "Kingston, Frontenac and Lennox and Addington Health Unit",
+      "pop": 208613.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3542,
+      "health_region": "Lambton",
+      "health_region_esri": "Lambton Health Unit",
+      "pop": 132243.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3543,
+      "health_region": "Leeds Grenville and Lanark",
+      "health_region_esri": "Leeds, Grenville and Lanark District Health Unit",
+      "pop": 177605.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3544,
+      "health_region": "Middlesex-London",
+      "health_region_esri": "Middlesex-London Health Unit",
+      "pop": 506008.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3546,
+      "health_region": "Niagara",
+      "health_region_esri": "Niagara Regional Area Health Unit",
+      "pop": 479183.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3547,
+      "health_region": "North Bay Parry Sound",
+      "health_region_esri": "North Bay Parry Sound District Health Unit",
+      "pop": 129642.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3549,
+      "health_region": "Northwestern",
+      "health_region_esri": "Northwestern Health Unit",
+      "pop": 81472.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3551,
+      "health_region": "Ottawa",
+      "health_region_esri": "City of Ottawa Health Unit",
+      "pop": 1028514.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3553,
+      "health_region": "Peel",
+      "health_region_esri": "Peel Regional Health Unit",
+      "pop": 1542001.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3555,
+      "health_region": "Peterborough",
+      "health_region_esri": "Peterborough County\u2013City Health Unit",
+      "pop": 147908.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3556,
+      "health_region": "Porcupine",
+      "health_region_esri": "Porcupine Health Unit",
+      "pop": 85422.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3557,
+      "health_region": "Renfrew",
+      "health_region_esri": "Renfrew County and District Health Unit",
+      "pop": 107955.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3560,
+      "health_region": "Simcoe Muskoka",
+      "health_region_esri": "Simcoe Muskoka District Health Unit",
+      "pop": 594494.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3575,
+      "health_region": "Southwestern",
+      "health_region_esri": "Southwestern Health Unit",
+      "pop": 215401.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3561,
+      "health_region": "Sudbury",
+      "health_region_esri": "Sudbury and District Health Unit",
+      "pop": 204640.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3562,
+      "health_region": "Thunder Bay",
+      "health_region_esri": "Thunder Bay District Health Unit",
+      "pop": 158165.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3563,
+      "health_region": "Timiskaming",
+      "health_region_esri": "Timiskaming Health Unit",
+      "pop": 33800.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3595,
+      "health_region": "Toronto",
+      "health_region_esri": "City of Toronto Health Unit",
+      "pop": 2965712.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3565,
+      "health_region": "Waterloo",
+      "health_region_esri": "Waterloo Health Unit",
+      "pop": 595465.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3566,
+      "health_region": "Wellington Dufferin Guelph",
+      "health_region_esri": "Wellington-Dufferin-Guelph Health Unit",
+      "pop": 308963.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3568,
+      "health_region": "Windsor-Essex",
+      "health_region_esri": "Windsor-Essex County Health Unit",
+      "pop": 428556.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 3570,
+      "health_region": "York",
+      "health_region_esri": "York Regional Health Unit",
+      "pop": 1181485.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "HR_UID": 1100,
+      "health_region": "Prince Edward Island",
+      "health_region_esri": "Prince Edward Island",
+      "pop": 156947.0,
+      "province": "PEI",
+      "province_full": "Prince Edward Island",
+      "province_short": "PE"
+    },
+    {
+      "HR_UID": 2408,
+      "health_region": "Abitibi-T\u00e9miscamingue",
+      "health_region_esri": "R\u00e9gion de l'Abitibi-T\u00e9miscamingue",
+      "pop": 147542.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2401,
+      "health_region": "Bas-Saint-Laurent",
+      "health_region_esri": "R\u00e9gion du Bas-Saint-Laurent",
+      "pop": 197322.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2403,
+      "health_region": "Capitale-Nationale",
+      "health_region_esri": "R\u00e9gion de la Capitale-Nationale",
+      "pop": 750645.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2412,
+      "health_region": "Chaudi\u00e8re-Appalaches",
+      "health_region_esri": "R\u00e9gion de la Chaudi\u00e8re-Appalaches",
+      "pop": 428618.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2409,
+      "health_region": "C\u00f4te-Nord",
+      "health_region_esri": "R\u00e9gion de la C\u00f4te-Nord",
+      "pop": 90704.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2405,
+      "health_region": "Estrie",
+      "health_region_esri": "R\u00e9gion de l'Estrie",
+      "pop": 489479.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2411,
+      "health_region": "Gasp\u00e9sie-\u00celes-de-la-Madeleine",
+      "health_region_esri": "R\u00e9gion de la Gasp\u00e9sie\u2014\u00celes-de-la-Madeleine",
+      "pop": 90334.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2414,
+      "health_region": "Lanaudi\u00e8re",
+      "health_region_esri": "R\u00e9gion de Lanaudi\u00e8re",
+      "pop": 515448.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2415,
+      "health_region": "Laurentides",
+      "health_region_esri": "R\u00e9gion des Laurentides",
+      "pop": 620264.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2413,
+      "health_region": "Laval",
+      "health_region_esri": "R\u00e9gion de Laval",
+      "pop": 438973.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2404,
+      "health_region": "Mauricie",
+      "health_region_esri": "R\u00e9gion de la Mauricie et du Centre-du-Qu\u00e9bec",
+      "pop": 520285.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2416,
+      "health_region": "Mont\u00e9r\u00e9gie",
+      "health_region_esri": "R\u00e9gion de la Mont\u00e9r\u00e9gie",
+      "pop": 1421586.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2406,
+      "health_region": "Montr\u00e9al",
+      "health_region_esri": "R\u00e9gion de Montr\u00e9al",
+      "pop": 2052910.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2410,
+      "health_region": "Nord-du-Qu\u00e9bec",
+      "health_region_esri": "R\u00e9gion du Nord-du-Qu\u00e9bec",
+      "pop": 13633.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2417,
+      "health_region": "Nunavik",
+      "health_region_esri": "R\u00e9gion du Nunavik",
+      "pop": 14102.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2407,
+      "health_region": "Outaouais",
+      "health_region_esri": "R\u00e9gion de l'Outaouais",
+      "pop": 397193.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2402,
+      "health_region": "Saguenay",
+      "health_region_esri": "R\u00e9gion du Saguenay\u2014Lac-Saint-Jean",
+      "pop": 277796.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 2418,
+      "health_region": "Terres-Cries-de-la-Baie-James",
+      "health_region_esri": "R\u00e9gion des Terres-Cries-de-la-Baie-James",
+      "pop": 18131.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "HR_UID": 473,
+      "health_region": "Central",
+      "health_region_esri": "Central",
+      "pop": 98566.0,
+      "province": "Saskatchewan",
+      "province_full": "Saskatchewan",
+      "province_short": "SK"
+    },
+    {
+      "HR_UID": 471,
+      "health_region": "Far North",
+      "health_region_esri": "Far North",
+      "pop": 37811.0,
+      "province": "Saskatchewan",
+      "province_full": "Saskatchewan",
+      "province_short": "SK"
+    },
+    {
+      "HR_UID": 472,
+      "health_region": "North",
+      "health_region_esri": "North",
+      "pop": 196246.0,
+      "province": "Saskatchewan",
+      "province_full": "Saskatchewan",
+      "province_short": "SK"
+    },
+    {
+      "HR_UID": 475,
+      "health_region": "Regina",
+      "health_region_esri": "Regina",
+      "pop": 304261.0,
+      "province": "Saskatchewan",
+      "province_full": "Saskatchewan",
+      "province_short": "SK"
+    },
+    {
+      "HR_UID": 474,
+      "health_region": "Saskatoon",
+      "health_region_esri": "Saskatoon",
+      "pop": 380403.0,
+      "province": "Saskatchewan",
+      "province_full": "Saskatchewan",
+      "province_short": "SK"
+    },
+    {
+      "HR_UID": 476,
+      "health_region": "South",
+      "health_region_esri": "South",
+      "pop": 157175.0,
+      "province": "Saskatchewan",
+      "province_full": "Saskatchewan",
+      "province_short": "SK"
+    },
+    {
+      "HR_UID": 6001,
+      "health_region": "Yukon",
+      "health_region_esri": "Yukon",
+      "pop": 40854.0,
+      "province": "Yukon",
+      "province_full": "Yukon",
+      "province_short": "YT"
+    }
+  ],
+  "provinces": [
+    {
+      "pop": 4371316.0,
+      "province": "Alberta",
+      "province_full": "Alberta",
+      "province_short": "AB"
+    },
+    {
+      "pop": 5071336.0,
+      "province": "BC",
+      "province_full": "British Columbia",
+      "province_short": "BC"
+    },
+    {
+      "pop": 1369465.0,
+      "province": "Manitoba",
+      "province_full": "Manitoba",
+      "province_short": "MB"
+    },
+    {
+      "pop": 776827.0,
+      "province": "New Brunswick",
+      "province_full": "New Brunswick",
+      "province_short": "NB"
+    },
+    {
+      "pop": 521542.0,
+      "province": "NL",
+      "province_full": "Newfoundland and Labrador",
+      "province_short": "NL"
+    },
+    {
+      "pop": 44826.0,
+      "province": "NWT",
+      "province_full": "Northwest Territories",
+      "province_short": "NT"
+    },
+    {
+      "pop": 971395.0,
+      "province": "Nova Scotia",
+      "province_full": "Nova Scotia",
+      "province_short": "NS"
+    },
+    {
+      "pop": 38780.0,
+      "province": "Nunavut",
+      "province_full": "Nunavut",
+      "province_short": "NU"
+    },
+    {
+      "pop": 14566547.0,
+      "province": "Ontario",
+      "province_full": "Ontario",
+      "province_short": "ON"
+    },
+    {
+      "pop": 156947.0,
+      "province": "PEI",
+      "province_full": "Prince Edward Island",
+      "province_short": "PE"
+    },
+    {
+      "pop": 8484965.0,
+      "province": "Quebec",
+      "province_full": "Quebec",
+      "province_short": "QC"
+    },
+    {
+      "pop": 1174462.0,
+      "province": "Saskatchewan",
+      "province_full": "Saskatchewan",
+      "province_short": "SK"
+    },
+    {
+      "pop": 40854.0,
+      "province": "Yukon",
+      "province_full": "Yukon",
+      "province_short": "YT"
+    }
+  ]
+}
