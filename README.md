@@ -2,7 +2,7 @@
 
 covidtracker.ca is project to track the Covid-19 pandemic and the vaccination progress in Canada.
 
-The project uses the [Nord theme](https://www.nordtheme.com/) for design and is built with [Nextjs]([API routes](https://nextjs.org/). The data frok the [COVID-19 Canada Open Data Working Group](https://opencovid.ca/).
+The project uses the [Nord theme](https://www.nordtheme.com/) for design and is built with [Nextjs](https://nextjs.org/). The data frok the [COVID-19 Canada Open Data Working Group](https://opencovid.ca/).
 
 The web application is available at [https://covidtracker.ca](https://covidtracker.ca).
 
