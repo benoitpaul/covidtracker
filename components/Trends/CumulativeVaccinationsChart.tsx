@@ -36,7 +36,6 @@ const CummulativeVaccinesChart: FC<CummulativeVaccinesChartProps> = ({
         : a.cumulativeAvaccine,
     };
   });
-  console.log({ merged });
 
   return (
     <>

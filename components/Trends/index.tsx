@@ -12,7 +12,6 @@ interface TrendsProps {
 }
 
 const Trends: FC<TrendsProps> = ({ provinceTimeseries }) => {
-  console.log({ provinceTimeseries });
   const { active, cases, mortality, recovered, avaccine, cvaccine } =
     provinceTimeseries;
   return (

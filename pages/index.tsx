@@ -1,40 +1,44 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
-import DesktopMap from "../components/DesktopMap";
+import CurrentRegionContext, {
+  CurrentRegionContextType,
+} from "../components/CurrentRegionContext";
 import Overview from "../components/Overview";
 import RegionsContext, {
   RegionsContextType,
 } from "../components/RegionsContext";
 import RegionsList from "../components/RegionsList";
 import Trends from "../components/Trends";
-import styles from "../styles/Home.module.css";
 import {
-  HealthRegionDailySummary,
-  HealthRegionSummaryResponse,
   ProvinceDailySummary,
   ProvinceSummaryResponse,
   ProvinceTimeseries,
   ProvinceTimeseriesResponse,
 } from "../types";
-import toHealthRegionDailySummary from "../utils/toHealthRegionDailySummary";
 import toProvinceDailySummary from "../utils/toProvinceDailySummary";
 import toProvinceTimeseries from "../utils/toProvinceTimeseries";
 
 interface HomePageProps {
   provinceSummary: ProvinceDailySummary;
   provinceTimeseries: ProvinceTimeseries;
-  healthRegionDailySummaries: HealthRegionDailySummary[];
 }
 
 const Home: NextPage<HomePageProps> = ({
   provinceSummary,
   provinceTimeseries,
-  healthRegionDailySummaries,
 }) => {
   const { provinces } = useContext(RegionsContext) as RegionsContextType;
+  const { setCurrentRegion } = useContext(
+    CurrentRegionContext
+  ) as CurrentRegionContextType;
+
+  useEffect(() => {
+    setCurrentRegion();
+  }, []);
+
   const population = provinces.reduce((acc, current) => acc + current.pop, 0);
 
   const provinceRegions = provinces.map((province) => {
@@ -70,35 +74,31 @@ const Home: NextPage<HomePageProps> = ({
       <span className="last-updated">
         Last updated: <time>{provinceSummary.date}</time>
       </span>
-      <DesktopMap healthRegionDailySummaries={healthRegionDailySummaries}>
-        <>
-          <Overview
-            avaccine={provinceSummary.cumulative.avaccine}
-            cvaccine={provinceSummary.cumulative.cvaccine}
-            population={population}
-            cases={provinceSummary.cumulative.cases}
-            casesChange={provinceSummary.cases}
-            activeChange={provinceSummary.activeCasesChange}
-            active={provinceSummary.activeCases}
-            deaths={provinceSummary.cumulative.deaths}
-            deathsChange={provinceSummary.deaths}
-            recovered={provinceSummary.cumulative.recovered}
-            recoveredChange={provinceSummary.recovered}
-          />
-          <Trends provinceTimeseries={provinceTimeseries} />
-          <RegionsList title="Provinces" regions={provinceRegions} />
-        </>
-      </DesktopMap>
+      <Overview
+        avaccine={provinceSummary.cumulative.avaccine}
+        cvaccine={provinceSummary.cumulative.cvaccine}
+        population={population}
+        cases={provinceSummary.cumulative.cases}
+        casesChange={provinceSummary.cases}
+        activeChange={provinceSummary.activeCasesChange}
+        active={provinceSummary.activeCases}
+        deaths={provinceSummary.cumulative.deaths}
+        deathsChange={provinceSummary.deaths}
+        recovered={provinceSummary.cumulative.recovered}
+        recoveredChange={provinceSummary.recovered}
+      />
+      <Trends provinceTimeseries={provinceTimeseries} />
+      <RegionsList title="Provinces" regions={provinceRegions} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
+  flex: 1;
+
   display: flex;
   flex-direction: column;
   gap: 2em;
-
-  padding: 1em;
 
   h1 {
     display: flex;
@@ -108,12 +108,6 @@ const Wrapper = styled.section`
 
   .last-updated {
     font-size: 0.75rem;
-  }
-`;
-
-const DesktopOnly = styled.div`
-  @media ${(p) => p.theme.breakpoints.mobile} {
-    display: none;
   }
 `;
 
@@ -132,21 +126,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
     await provinceTimeseriesResponse.json()
   ) as ProvinceTimeseriesResponse;
 
-  const healthRegionRes = await fetch(
-    `https://api.opencovid.ca/summary?loc=hr`
-  );
-  const healthRegionData = (await healthRegionRes.json()) as {
-    summary: HealthRegionSummaryResponse[];
-  };
-  const healthRegionDailySummaries = healthRegionData.summary.map((s) =>
-    toHealthRegionDailySummary(s)
-  );
+  // const healthRegionRes = await fetch(
+  //   `https://api.opencovid.ca/summary?loc=hr`
+  // );
+  // const healthRegionData = (await healthRegionRes.json()) as {
+  //   summary: HealthRegionSummaryResponse[];
+  // };
+  // const healthRegionDailySummaries = healthRegionData.summary.map((s) =>
+  //   toHealthRegionDailySummary(s)
+  // );
 
   return {
     props: {
       provinceSummary,
       provinceTimeseries,
-      healthRegionDailySummaries,
     },
     revalidate: 3600,
   };

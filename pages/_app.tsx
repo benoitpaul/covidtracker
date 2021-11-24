@@ -3,7 +3,9 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import GlobalStyle from "../styles/GlobalStyles";
 import Header from "../components/Header";
+import DesktopMap from "../components/DesktopMap";
 import { RegionsProvider } from "../components/RegionsContext";
+import { CurrentRegionProvider } from "../components/CurrentRegionContext";
 import Footer from "../components/Footer";
 import { THEME } from "../constants";
 import StyledLayout from "../styles/StyledLayout";
@@ -24,14 +26,18 @@ function MyApp({ Component, pageProps }: AppProps) {
           />
         </Head>
         <RegionsProvider>
-          <GlobalStyle />
-          <StyledLayout>
-            <Header />
-            <main>
-              <Component {...pageProps} />
-            </main>
-            <Footer />
-          </StyledLayout>
+          <CurrentRegionProvider>
+            <GlobalStyle />
+            <StyledLayout>
+              <Header />
+              <main>
+                <DesktopMap>
+                  <Component {...pageProps} />
+                </DesktopMap>
+              </main>
+              <Footer />
+            </StyledLayout>
+          </CurrentRegionProvider>
         </RegionsProvider>
       </>
     </ThemeProvider>

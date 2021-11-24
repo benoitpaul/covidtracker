@@ -1,27 +1,27 @@
 import dynamic from "next/dynamic";
-import React, { FC } from "react";
+import React, { FC, useContext, useMemo } from "react";
 import styled from "styled-components";
-import { HealthRegionDailySummary } from "../types";
+import CurrentRegionContext, {
+  CurrentRegionContextType,
+} from "./CurrentRegionContext";
 
-interface DesktopMapProps {
-  healthRegionDailySummaries: HealthRegionDailySummary[];
-}
+const DesktopMap: FC = ({ children }) => {
+  const { currentRegion } = useContext(
+    CurrentRegionContext
+  ) as CurrentRegionContextType;
 
-const DesktopMap: FC<DesktopMapProps> = ({
-  healthRegionDailySummaries,
-  children,
-}) => {
-  const Map = dynamic(
-    () => import("./HealthRegionsMap"), // replace '@components/map' with your component's location
-    {
+  const Map = useMemo(() => {
+    console.log("create new map");
+    return dynamic(() => import("./HealthRegionsMap/HealthRegionsMapLoader"), {
       loading: () => <p>A map is loading</p>,
       ssr: false,
-    }
-  );
+    });
+  }, []);
+
   return (
     <Wrapper>
       <div className="map">
-        <Map healthRegionDailySummaries={healthRegionDailySummaries} />
+        <Map zoomToRegion={currentRegion} />
       </div>
       <div className="content">{children}</div>
     </Wrapper>
@@ -29,9 +29,19 @@ const DesktopMap: FC<DesktopMapProps> = ({
 };
 
 const Wrapper = styled.div`
+  flex: 1;
   position: relative;
 
   .map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+
     @media ${(p) => p.theme.breakpoints.mobile} {
       display: none;
     }
@@ -53,12 +63,6 @@ const Wrapper = styled.div`
       overflow-y: auto;
     }
   }
-
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-
-  padding: 1em;
 `;
 
 export default DesktopMap;

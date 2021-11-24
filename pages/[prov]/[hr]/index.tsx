@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Head from "next/head";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import CasesOverview from "../../../components/Overview/CasesOverview";
 import {
@@ -10,14 +10,27 @@ import {
 } from "../../../types";
 import getRegionsData from "../../../utils/getRegionsData";
 import toHealthRegionDailySummary from "../../../utils/toHealthRegionDailySummary";
+import CurrentRegionContext, {
+  CurrentRegionContextType,
+} from "../../../components/CurrentRegionContext";
 
 interface HealthRegionPageProps {
+  hrCode: string;
   healthRegionSummary: HealthRegionDailySummary;
 }
 
 const HealthRegionPage: NextPage<HealthRegionPageProps> = ({
+  hrCode,
   healthRegionSummary,
 }) => {
+  const { setCurrentRegion } = useContext(
+    CurrentRegionContext
+  ) as CurrentRegionContextType;
+
+  useEffect(() => {
+    setCurrentRegion(hrCode);
+  }, [hrCode]);
+
   return (
     <>
       <Head>
@@ -80,6 +93,7 @@ export const getStaticProps: GetStaticProps<HealthRegionPageProps, Params> =
 
     return {
       props: {
+        hrCode: hr,
         healthRegionSummary,
       },
     };

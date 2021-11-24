@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Image from "next/image";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import RegionsContext, {
   RegionsContextType,
@@ -11,8 +11,6 @@ import {
   ProvinceDailySummary,
   ProvinceSummaryResponse,
   ProvinceTimeseries,
-  ProvinceTimeseriesResponse,
-  RegionsReference,
 } from "../../types";
 import Overview from "../../components/Overview";
 import Trends from "../../components/Trends";
@@ -21,19 +19,27 @@ import toProvinceDailySummary from "../../utils/toProvinceDailySummary";
 import Head from "next/head";
 import toProvinceTimeseries from "../../utils/toProvinceTimeseries";
 import getRegionsData from "../../utils/getRegionsData";
+import CurrentRegionContext, {
+  CurrentRegionContextType,
+} from "../../components/CurrentRegionContext";
 
 interface ProvincePageProps {
+  provinceCode: string;
   provinceSummary: ProvinceDailySummary;
   provinceTimeseries: ProvinceTimeseries;
 }
 
 const ProvincePage: NextPage<ProvincePageProps> = ({
+  provinceCode,
   provinceSummary,
   provinceTimeseries,
 }) => {
   const { provinces, healthRegions } = useContext(
     RegionsContext
   ) as RegionsContextType;
+  const { setCurrentRegion } = useContext(
+    CurrentRegionContext
+  ) as CurrentRegionContextType;
   const province = provinces.find(
     (p) => p.province === provinceSummary.province
   ) as Province;
@@ -46,6 +52,10 @@ const ProvincePage: NextPage<ProvincePageProps> = ({
         label: hr.health_region,
       };
     });
+
+  useEffect(() => {
+    setCurrentRegion(provinceCode);
+  }, [provinceCode]);
 
   return (
     <>
@@ -252,6 +262,7 @@ export const getStaticProps: GetStaticProps<ProvincePageProps, Params> = async (
 
   return {
     props: {
+      provinceCode: prov,
       provinceSummary,
       provinceTimeseries,
     },
