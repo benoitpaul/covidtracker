@@ -9,6 +9,7 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 import { ProvinceTimeseriesActive } from "../../types";
+import styled from "styled-components";
 
 interface ActiveCasesChartProps {
   active: ProvinceTimeseriesActive[];
@@ -16,7 +17,7 @@ interface ActiveCasesChartProps {
 
 const ActiveCasesChart: FC<ActiveCasesChartProps> = ({ active }) => {
   return (
-    <>
+    <Wrapper>
       <h3>Active cases chart</h3>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={active}>
@@ -43,8 +44,13 @@ const ActiveCasesChart: FC<ActiveCasesChartProps> = ({ active }) => {
           />
         </LineChart>
       </ResponsiveContainer>
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default ActiveCasesChart;

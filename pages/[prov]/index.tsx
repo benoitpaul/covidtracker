@@ -162,8 +162,6 @@ const Wrapper = styled.section`
   flex-direction: column;
   gap: 2em;
 
-  padding: 1em;
-
   h1 {
     display: flex;
     justify-content: space-between;

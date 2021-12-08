@@ -5,6 +5,7 @@ const StyledSwitchField = styled.span`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
+  position: relative;
 
   input {
     position: absolute !important;

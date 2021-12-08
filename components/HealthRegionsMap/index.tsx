@@ -1,12 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { MapContainer, TileLayer, GeoJSON, ZoomControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Feature } from "geojson";
 import * as geoProvinces from "../../data/provinces.json";
 import styled from "styled-components";
-import { HealthRegionMapInfo, MapMetric, MapMetricConfigs } from "./constants";
-import MapLegend from "./MapLegend";
-import TopRightControlContainer from "./TopRightControlContainer";
+import { HealthRegionMapInfo, MapMetric } from "./constants";
 import HealthRegionChoropleth from "./HealthRegionChoropleth";
 import ZoomToRegion from "./ZoomToRegion";
 
@@ -16,12 +14,14 @@ interface HealthRegionsMapProps {
   infos: HealthRegionMapInfo[];
   mapMetric: MapMetric;
   zoomToRegion?: string;
+  onMouseOverFeature: (hrUID: string) => void;
 }
 
 const HealthRegionsMap: FC<HealthRegionsMapProps> = ({
   infos,
   mapMetric,
   zoomToRegion,
+  onMouseOverFeature,
 }) => {
   return (
     <Wrapper>
@@ -42,33 +42,48 @@ const HealthRegionsMap: FC<HealthRegionsMapProps> = ({
         />
 
         {mapMetric === "cumulative-cases" && (
-          <HealthRegionChoropleth mapMetric="cumulative-cases" infos={infos} />
+          <HealthRegionChoropleth
+            mapMetric="cumulative-cases"
+            infos={infos}
+            onMouseOverFeature={onMouseOverFeature}
+          />
         )}
         {mapMetric === "cumulative-cases-percentage" && (
           <HealthRegionChoropleth
             mapMetric="cumulative-cases-percentage"
             infos={infos}
+            onMouseOverFeature={onMouseOverFeature}
           />
         )}
         {mapMetric === "new-cases" && (
-          <HealthRegionChoropleth mapMetric="new-cases" infos={infos} />
+          <HealthRegionChoropleth
+            mapMetric="new-cases"
+            infos={infos}
+            onMouseOverFeature={onMouseOverFeature}
+          />
         )}
         {mapMetric === "cumulative-deaths" && (
-          <HealthRegionChoropleth mapMetric="cumulative-deaths" infos={infos} />
+          <HealthRegionChoropleth
+            mapMetric="cumulative-deaths"
+            infos={infos}
+            onMouseOverFeature={onMouseOverFeature}
+          />
         )}
         {mapMetric === "cumulative-deaths-percentage" && (
           <HealthRegionChoropleth
             mapMetric="cumulative-deaths-percentage"
             infos={infos}
+            onMouseOverFeature={onMouseOverFeature}
           />
         )}
         {mapMetric === "new-deaths" && (
-          <HealthRegionChoropleth mapMetric="new-deaths" infos={infos} />
+          <HealthRegionChoropleth
+            mapMetric="new-deaths"
+            infos={infos}
+            onMouseOverFeature={onMouseOverFeature}
+          />
         )}
         <ZoomControl position="bottomright" />
-        <TopRightControlContainer>
-          <MapLegend config={MapMetricConfigs[mapMetric]} />
-        </TopRightControlContainer>
         <ZoomToRegion zoomToRegion={zoomToRegion} />
       </MapContainer>
     </Wrapper>
@@ -81,7 +96,8 @@ const Wrapper = styled.div`
   gap: 1em;
 
   height: 100%;
+  width: 100%;
 `;
 
 // export default React.memo(HealthRegionsMap);
-export default HealthRegionsMap;
+export default memo(HealthRegionsMap);

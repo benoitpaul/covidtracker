@@ -9,8 +9,22 @@ import { CurrentRegionProvider } from "../components/CurrentRegionContext";
 import Footer from "../components/Footer";
 import { THEME } from "../constants";
 import StyledLayout from "../styles/StyledLayout";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import * as gtag from "../lib/gtag";
+import StyledArticle from "../styles/StyledArticle";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url: any) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <ThemeProvider theme={THEME}>
       <>
@@ -30,11 +44,15 @@ function MyApp({ Component, pageProps }: AppProps) {
             <GlobalStyle />
             <StyledLayout>
               <Header />
-              <main>
-                <DesktopMap>
+              <DesktopMap>
+                <Component {...pageProps} />
+              </DesktopMap>
+              {/* <main>
+                <StyledArticle>
                   <Component {...pageProps} />
-                </DesktopMap>
-              </main>
+                </StyledArticle>
+                <div>test</div>
+              </main> */}
               <Footer />
             </StyledLayout>
           </CurrentRegionProvider>

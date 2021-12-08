@@ -73,7 +73,14 @@ const GlobalStyle = createGlobalStyle`
     color:var(--clr-text);
 
     font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, “Roboto”, “Oxygen”,“Ubuntu”, “Cantarell”, “Fira Sans”,“Droid Sans”, “Helvetica Neue”, sans-serif;
-  
+    overflow: hidden; // prevent scroll-bar
+  }
+
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
   }
 
   /* Scroll bars */

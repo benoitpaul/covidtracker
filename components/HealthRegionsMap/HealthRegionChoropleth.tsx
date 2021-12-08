@@ -21,11 +21,13 @@ const geoHealthRegionsFeature = geoHealthRegions as unknown as Feature;
 interface HealthRegionChoroplethProps {
   infos: HealthRegionMapInfo[];
   mapMetric: MapMetric;
+  onMouseOverFeature: (hrUID: string) => void;
 }
 
 const HealthRegionChoropleth: FC<HealthRegionChoroplethProps> = ({
   infos,
   mapMetric,
+  onMouseOverFeature,
 }) => {
   const geoJsonHrRef = useRef<LeafletGeoJSON>(null);
 
@@ -71,6 +73,8 @@ const HealthRegionChoropleth: FC<HealthRegionChoroplethProps> = ({
       weight: 2,
     });
     layer.bringToFront();
+
+    onMouseOverFeature(layer.feature.properties["HR_UID"]);
   };
 
   const handleMouseOutFeature: LeafletEventHandlerFn = (e: LeafletEvent) => {

@@ -14,6 +14,7 @@ import {
   ProvinceTimeseriesRecovered,
 } from "../../types";
 import StyledSwitchField from "../../styles/StyledSwitchField";
+import styled from "styled-components";
 
 type DailySpreadChartDataKey = "cases" | "deaths" | "recovered";
 type DailySpreadChartDataValue =
@@ -53,8 +54,13 @@ const DailySpreadChart: FC<DailySpreadChartProps> = ({
   };
 
   return (
-    <>
+    <Wrapper>
       <h3>Daily spread chart</h3>
+      {/* <div>
+        <button onClick={() => setDataKey("cases")}>cases</button>
+        <button onClick={() => setDataKey("deaths")}>deaths</button>
+        <button onClick={() => setDataKey("recovered")}>recovered</button>
+      </div> */}
       <StyledSwitchField>
         <input
           type="radio"
@@ -84,6 +90,7 @@ const DailySpreadChart: FC<DailySpreadChartProps> = ({
         />
         <label htmlFor="radio-trend-daily-recovered">Recovered</label>
       </StyledSwitchField>
+
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={DataKeyValues[dataKey]}>
           <XAxis
@@ -109,8 +116,13 @@ const DailySpreadChart: FC<DailySpreadChartProps> = ({
           />
         </AreaChart>
       </ResponsiveContainer>
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default DailySpreadChart;
