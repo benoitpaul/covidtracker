@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import React, { FC, useContext, useMemo } from "react";
 import styled from "styled-components";
+import StyledArticle from "../styles/StyledArticle";
 import CurrentRegionContext, {
   CurrentRegionContextType,
 } from "./CurrentRegionContext";
@@ -11,7 +12,6 @@ const DesktopMap: FC = ({ children }) => {
   ) as CurrentRegionContextType;
 
   const Map = useMemo(() => {
-    console.log("create new map");
     return dynamic(() => import("./HealthRegionsMap/HealthRegionsMapLoader"), {
       loading: () => <p>A map is loading</p>,
       ssr: false,
@@ -20,47 +20,31 @@ const DesktopMap: FC = ({ children }) => {
 
   return (
     <Wrapper>
+      <StyledArticle>{children}</StyledArticle>
       <div className="map">
         <Map zoomToRegion={currentRegion} />
       </div>
-      <div className="content">{children}</div>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   flex: 1;
-  position: relative;
+  overflow: hidden;
+  display: flex;
 
-  .map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    @media ${(p) => p.theme.breakpoints.mobile} {
-      display: none;
+  article {
+    @media ${(p) => p.theme.breakpoints.desktop} {
+      width: 400px;
     }
   }
 
-  .content {
-    background: var(--clr-background);
-    z-index: 2000;
-    border-radius: 8px;
-    padding: 1em;
+  .map {
+    flex: 1;
+    position: relative;
 
-    @media ${(p) => p.theme.breakpoints.desktop} {
-      position: absolute;
-      top: 80px;
-      bottom: 40px;
-      left: 40px;
-      width: 400px;
-
-      overflow-y: auto;
+    @media ${(p) => p.theme.breakpoints.mobile} {
+      display: none;
     }
   }
 `;

@@ -12,6 +12,7 @@ import {
   ProvinceTimeseriesAvaccine,
   ProvinceTimeseriesCvaccine,
 } from "../../types";
+import styled from "styled-components";
 
 interface CummulativeVaccinesChartProps {
   avaccine: ProvinceTimeseriesAvaccine[];
@@ -38,7 +39,7 @@ const CummulativeVaccinesChart: FC<CummulativeVaccinesChartProps> = ({
   });
 
   return (
-    <>
+    <Wrapper>
       <h3>Cumulative vaccines chart</h3>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={merged}>
@@ -73,8 +74,13 @@ const CummulativeVaccinesChart: FC<CummulativeVaccinesChartProps> = ({
           />
         </AreaChart>
       </ResponsiveContainer>
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default CummulativeVaccinesChart;

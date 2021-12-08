@@ -1,11 +1,19 @@
-import React, { ChangeEvent, FC, useContext, useMemo, useState } from "react";
+import React, {
+  ChangeEvent,
+  FC,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
+import styled from "styled-components";
 import useSWRImmutable from "swr/immutable";
 import HealthRegionsMap from ".";
 import { HealthRegion, HealthRegionSummaryResponse } from "../../types";
 import toHealthRegionDailySummary from "../../utils/toHealthRegionDailySummary";
 import RegionsContext, { RegionsContextType } from "../RegionsContext";
 import { HealthRegionMapInfo, MapMetric } from "./constants";
-import HealthRegionMetricSwitchField from "./HealthRegionMetricSwitchField";
+import HealthRegionMapControl from "./HealthRegionMapControl";
 
 interface HealthRegionMapProviderProps {
   zoomToRegion?: string;
@@ -18,6 +26,7 @@ const HealthRegionMapProvider: FC<HealthRegionMapProviderProps> = ({
 }) => {
   const { healthRegions } = useContext(RegionsContext) as RegionsContextType;
   const [mapMetric, setMapMetric] = useState<MapMetric>("cumulative-cases");
+  const [mouseOverInfo, setMouseOverInfo] = useState<HealthRegionMapInfo>();
 
   const { data: healthRegionsResponse } = useSWRImmutable<{
     summary: HealthRegionSummaryResponse[];
@@ -29,53 +38,78 @@ const HealthRegionMapProvider: FC<HealthRegionMapProviderProps> = ({
     );
   }, [healthRegionsResponse]);
 
-  const aggregated: HealthRegionMapInfo[] =
-    healthRegionDailySummaries?.map((hr) => {
-      const healthRegion = healthRegions.find(
-        (region: HealthRegion) =>
-          region.health_region === hr.healthRegion &&
-          region.province === hr.province
-      );
+  const aggregated: HealthRegionMapInfo[] = useMemo(() => {
+    return (
+      healthRegionDailySummaries?.map((hr) => {
+        const healthRegion = healthRegions.find(
+          (region: HealthRegion) =>
+            region.health_region === hr.healthRegion &&
+            region.province === hr.province
+        );
 
-      const calculated: HealthRegionMapInfo = {
-        name: hr.healthRegion,
-        "cumulative-cases": hr.cumulative.cases,
-        "cumulative-cases-percentage": healthRegion
-          ? hr.cumulative.cases / healthRegion.pop
-          : 0,
-        "new-cases": hr.cases,
-        "cumulative-deaths": hr.cumulative.deaths,
-        "cumulative-deaths-percentage": healthRegion
-          ? hr.cumulative.deaths / healthRegion.pop
-          : 0,
-        "new-deaths": hr.deaths,
-      };
+        const calculated: HealthRegionMapInfo = {
+          name: hr.healthRegion,
+          "cumulative-cases": hr.cumulative.cases,
+          "cumulative-cases-percentage": healthRegion
+            ? hr.cumulative.cases / healthRegion.pop
+            : 0,
+          "new-cases": hr.cases,
+          "cumulative-deaths": hr.cumulative.deaths,
+          "cumulative-deaths-percentage": healthRegion
+            ? hr.cumulative.deaths / healthRegion.pop
+            : 0,
+          "new-deaths": hr.deaths,
+        };
 
-      return {
-        ...hr,
-        ...healthRegion,
-        ...calculated,
-      };
-    }) || [];
+        return {
+          ...hr,
+          ...healthRegion,
+          ...calculated,
+        };
+      }) || []
+    );
+  }, [healthRegionDailySummaries, healthRegions]);
 
-  const handleMapMetricChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleMapMetricChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setMapMetric(e.target.value as MapMetric);
   };
+
+  const handleMouseOverFeature = useCallback(
+    (hrUID: string) => {
+      console.log({ hrUID });
+      const info = aggregated.find((hr) => hr.HR_UID === Number(hrUID));
+      console.log({ info });
+      setMouseOverInfo(info);
+    },
+    [aggregated]
+  );
+
+  console.log("rendering map");
+
   return (
-    <>
-      <HealthRegionMetricSwitchField
-        metric={mapMetric}
-        handleMetricChange={handleMapMetricChange}
-      />
+    <Wrapper>
       {aggregated?.length && (
         <HealthRegionsMap
           infos={aggregated}
           mapMetric={mapMetric}
           zoomToRegion={zoomToRegion}
+          onMouseOverFeature={handleMouseOverFeature}
         />
       )}
-    </>
+      <HealthRegionMapControl
+        mapMetric={mapMetric}
+        handleMapMetricChange={handleMapMetricChange}
+        mouseOverInfo={mouseOverInfo}
+      />
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+`;
 
 export default HealthRegionMapProvider;

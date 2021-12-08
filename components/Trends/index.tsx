@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 import { ProvinceTimeseries } from "../../types";

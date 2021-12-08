@@ -3,13 +3,13 @@ import styled from "styled-components";
 const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  //width: 100vw;
 
   main {
     flex: 1;
-
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
   }
 `;
 

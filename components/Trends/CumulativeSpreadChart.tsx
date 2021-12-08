@@ -12,6 +12,7 @@ import {
 import { format } from "date-fns";
 import { ProvinceTimeseriesActive } from "../../types";
 import StyledSwitchField from "../../styles/StyledSwitchField";
+import styled from "styled-components";
 
 export type CumulativeSpreadChartDataKey =
   | "cases"
@@ -37,7 +38,7 @@ const CumulativeSpreadChart: FC<CumulativeSpreadChartProps> = ({ active }) => {
   };
 
   return (
-    <>
+    <Wrapper>
       <h3>Cumulative spread chart</h3>
       <StyledSwitchField>
         <input
@@ -131,8 +132,13 @@ const CumulativeSpreadChart: FC<CumulativeSpreadChartProps> = ({ active }) => {
           </AreaChart>
         )}
       </ResponsiveContainer>
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default CumulativeSpreadChart;

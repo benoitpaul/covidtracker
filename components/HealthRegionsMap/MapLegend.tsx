@@ -57,28 +57,21 @@ const MapLegend: FC<MapLegendProps> = ({ config }) => {
   }, [] as LegendItem[]);
   return (
     <Wrapper>
-      <div className="leaflet-control leaflet-bar">
-        <StyledVerticalList>
-          {items.map((item) => (
-            <li key={item.label}>
-              <span>
-                <StyledLegendItemColor color={item.color} />
-                <span>{item.label}</span>
-              </span>
-            </li>
-          ))}
-        </StyledVerticalList>
-      </div>
+      <StyledVerticalList>
+        {items.map((item) => (
+          <li key={item.label}>
+            <span>
+              <StyledLegendItemColor color={item.color} />
+              <span>{item.label}</span>
+            </span>
+          </li>
+        ))}
+      </StyledVerticalList>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div`
-  .leaflet-bar {
-    background: var(--clr-background);
-    padding: 1em;
-  }
-
+const Wrapper = styled.section`
   li > span {
     display: flex;
     gap: 1em;
