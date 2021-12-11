@@ -34,8 +34,9 @@ const Wrapper = styled.main`
   display: flex;
 
   article {
+    flex: 1;
     @media ${(p) => p.theme.breakpoints.desktop} {
-      width: 400px;
+      flex: 0 0 400px;
     }
   }
 
