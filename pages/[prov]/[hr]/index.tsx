@@ -94,6 +94,7 @@ export const getStaticProps: GetStaticProps<HealthRegionPageProps, Params> =
         hrCode: hr,
         healthRegionSummary,
       },
+      revalidate: 3600,
     };
   };
 

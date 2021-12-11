@@ -264,6 +264,7 @@ export const getStaticProps: GetStaticProps<ProvincePageProps, Params> = async (
       provinceSummary,
       provinceTimeseries,
     },
+    revalidate: 3600,
   };
 };
 
