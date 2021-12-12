@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import React, { FC, useContext, useMemo } from "react";
 import styled from "styled-components";
+import { BREAKPOINTS } from "../constants";
+import useMedia from "../hooks/useMedia";
 import StyledArticle from "../styles/StyledArticle";
 import CurrentRegionContext, {
   CurrentRegionContextType,
@@ -11,9 +13,15 @@ const DesktopMap: FC = ({ children }) => {
     CurrentRegionContext
   ) as CurrentRegionContextType;
 
+  const isDesktop = useMedia<boolean>(
+    [BREAKPOINTS.mobile, BREAKPOINTS.desktop],
+    [false, true],
+    false
+  );
+
   const Map = useMemo(() => {
-    return dynamic(() => import("./HealthRegionsMap/HealthRegionsMapLoader"), {
-      loading: () => <p>A map is loading</p>,
+    return dynamic(() => import("./HealthRegionsMap/HealthRegionMapProvider"), {
+      loading: () => <p>Loading map...</p>,
       ssr: false,
     });
   }, []);
@@ -22,7 +30,7 @@ const DesktopMap: FC = ({ children }) => {
     <Wrapper>
       <StyledArticle>{children}</StyledArticle>
       <div className="map">
-        <Map zoomToRegion={currentRegion} />
+        {isDesktop && <Map zoomToRegion={currentRegion} />}
       </div>
     </Wrapper>
   );

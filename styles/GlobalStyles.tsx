@@ -63,6 +63,10 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 0.5em;
   }
 
+  h1 {
+    font-size: 2rem;
+  }
+
   html {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -118,6 +122,10 @@ const GlobalStyle = createGlobalStyle`
     &:hover, &:active {
      text-decoration: underline;  
     }
+}
+
+p {
+  line-height: 1.6em;
 }
 
   /* Remove all animations and transitions for people that prefer not to see them */

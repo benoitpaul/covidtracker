@@ -1,7 +1,8 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
-import Image from "next/image";
+import useInView from "react-cool-inview";
 import React, { useContext, useEffect } from "react";
+import dynamic from "next/dynamic";
 import styled from "styled-components";
 import RegionsContext, {
   RegionsContextType,
@@ -13,7 +14,6 @@ import {
   ProvinceTimeseries,
 } from "../../types";
 import Overview from "../../components/Overview";
-import Trends from "../../components/Trends";
 import RegionsList from "../../components/RegionsList";
 import toProvinceDailySummary from "../../utils/toProvinceDailySummary";
 import Head from "next/head";
@@ -22,6 +22,8 @@ import getRegionsData from "../../utils/getRegionsData";
 import CurrentRegionContext, {
   CurrentRegionContextType,
 } from "../../components/CurrentRegionContext";
+import RegionHeader from "../../components/RegionHeader";
+import SummaryOnDate from "../../components/SummaryOnDate";
 
 interface ProvincePageProps {
   provinceCode: string;
@@ -57,24 +59,30 @@ const ProvincePage: NextPage<ProvincePageProps> = ({
     setCurrentRegion(provinceCode);
   }, [provinceCode]);
 
+  const { observe, inView } = useInView({
+    onEnter: ({ unobserve }) => unobserve(), // only run once
+  });
+
+  const Trends = dynamic(() => import("../../components/Trends"));
+
   return (
     <>
       <Head>
         <title>Covid Tracker - {province.province_full}</title>
       </Head>
       <Wrapper>
-        <h1>
-          <span>{province.province_full}</span>
-          <Image
-            src={`/flags/CA-${province.province_short}.svg`}
-            alt={`${province.province_full} flag`}
-            width={80}
-            height={40}
-          />
-        </h1>
-        <span className="last-updated">
-          Last updated: <time>{provinceSummary.date}</time>
-        </span>
+        <RegionHeader
+          name={province.province_full}
+          flagCode={`CA-${province.province_short}`}
+          lastUpdated={provinceSummary.date}
+        />
+        <SummaryOnDate
+          region={province.province_full}
+          date={provinceSummary.date}
+          newCases={provinceSummary.cases}
+          newDeaths={provinceSummary.deaths}
+        />
+
         <Overview
           avaccine={provinceSummary.cumulative.avaccine}
           cvaccine={provinceSummary.cumulative.cvaccine}
@@ -88,7 +96,9 @@ const ProvincePage: NextPage<ProvincePageProps> = ({
           recovered={provinceSummary.cumulative.recovered}
           recoveredChange={provinceSummary.recovered}
         />
-        <Trends provinceTimeseries={provinceTimeseries} />
+        <div ref={observe}>
+          {inView && <Trends provinceTimeseries={provinceTimeseries} />}
+        </div>
         <RegionsList title="Health regions" regions={provinceHealthRegions} />
         {/* <section>
         <h2>Epidemiology</h2>
@@ -161,16 +171,6 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2em;
-
-  h1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .last-updated {
-    font-size: 0.75rem;
-  }
 `;
 
 const Dashboard = styled.section`
