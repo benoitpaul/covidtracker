@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import CurrentRegionContext, {
@@ -11,7 +11,6 @@ import RegionsContext, {
   RegionsContextType,
 } from "../components/RegionsContext";
 import RegionsList from "../components/RegionsList";
-import Trends from "../components/Trends";
 import {
   ProvinceDailySummary,
   ProvinceSummaryResponse,
@@ -20,6 +19,9 @@ import {
 } from "../types";
 import toProvinceDailySummary from "../utils/toProvinceDailySummary";
 import toProvinceTimeseries from "../utils/toProvinceTimeseries";
+import SummaryOnDate from "../components/SummaryOnDate";
+import RegionHeader from "../components/RegionHeader";
+import useInView from "react-cool-inview";
 
 interface HomePageProps {
   provinceSummary: ProvinceDailySummary;
@@ -39,6 +41,10 @@ const Home: NextPage<HomePageProps> = ({
     setCurrentRegion();
   }, []);
 
+  const { observe, inView } = useInView({
+    onEnter: ({ unobserve }) => unobserve(), // only run once
+  });
+
   const population = provinces.reduce((acc, current) => acc + current.pop, 0);
 
   const provinceRegions = provinces.map((province) => {
@@ -47,6 +53,8 @@ const Home: NextPage<HomePageProps> = ({
       label: province.province_full,
     };
   });
+
+  const Trends = dynamic(() => import("../components/Trends"));
 
   return (
     <Wrapper>
@@ -61,19 +69,17 @@ const Home: NextPage<HomePageProps> = ({
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦠</text></svg>"
         />
       </Head>
-
-      <h1>
-        <span>Canada</span>
-        <Image
-          src={`/flags/CA.svg`}
-          alt={`Canada flag`}
-          width={80}
-          height={40}
-        />
-      </h1>
-      <span className="last-updated">
-        Last updated: <time>{provinceSummary.date}</time>
-      </span>
+      <RegionHeader
+        name="Canada"
+        flagCode="CA"
+        lastUpdated={provinceSummary.date}
+      />
+      <SummaryOnDate
+        region="Canada"
+        date={provinceSummary.date}
+        newCases={provinceSummary.cases}
+        newDeaths={provinceSummary.deaths}
+      />
       <Overview
         avaccine={provinceSummary.cumulative.avaccine}
         cvaccine={provinceSummary.cumulative.cvaccine}
@@ -87,7 +93,10 @@ const Home: NextPage<HomePageProps> = ({
         recovered={provinceSummary.cumulative.recovered}
         recoveredChange={provinceSummary.recovered}
       />
-      <Trends provinceTimeseries={provinceTimeseries} />
+      <div ref={observe}>
+        {inView && <Trends provinceTimeseries={provinceTimeseries} />}
+      </div>
+
       <RegionsList title="Provinces" regions={provinceRegions} />
     </Wrapper>
   );
@@ -99,16 +108,6 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2em;
-
-  h1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .last-updated {
-    font-size: 0.75rem;
-  }
 `;
 
 export const getStaticProps: GetStaticProps = async (context) => {

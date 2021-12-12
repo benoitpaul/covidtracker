@@ -13,6 +13,8 @@ import toHealthRegionDailySummary from "../../../utils/toHealthRegionDailySummar
 import CurrentRegionContext, {
   CurrentRegionContextType,
 } from "../../../components/CurrentRegionContext";
+import RegionHeader from "../../../components/RegionHeader";
+import SummaryOnDate from "../../../components/SummaryOnDate";
 
 interface HealthRegionPageProps {
   hrCode: string;
@@ -37,12 +39,16 @@ const HealthRegionPage: NextPage<HealthRegionPageProps> = ({
         <title>Covid Tracker - {healthRegionSummary.healthRegion}</title>
       </Head>
       <Wrapper>
-        <h1>
-          <span>{healthRegionSummary.healthRegion}</span>
-        </h1>
-        <span className="last-updated">
-          Last updated: <time>{healthRegionSummary.date}</time>
-        </span>
+        <RegionHeader
+          name={healthRegionSummary.healthRegion}
+          lastUpdated={healthRegionSummary.date}
+        />
+        <SummaryOnDate
+          region={healthRegionSummary.healthRegion}
+          date={healthRegionSummary.date}
+          newCases={healthRegionSummary.cases}
+          newDeaths={healthRegionSummary.deaths}
+        />
         <CasesOverview
           cases={healthRegionSummary.cumulative.cases}
           casesChange={healthRegionSummary.cases}
@@ -58,16 +64,6 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2em;
-
-  h1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .last-updated {
-    font-size: 0.75rem;
-  }
 `;
 
 interface Params extends ParsedUrlQuery {

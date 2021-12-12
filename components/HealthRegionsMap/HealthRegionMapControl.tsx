@@ -29,7 +29,6 @@ const HealthRegionMapControl: FC<HealthRegionMapControlProps> = ({
 };
 
 const Wrapper = styled.section`
-  width: 24em;
   padding: 1em;
 
   display: flex;

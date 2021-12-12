@@ -88,19 +88,23 @@ const HealthRegionMapProvider: FC<HealthRegionMapProviderProps> = ({
 
   return (
     <Wrapper>
-      {aggregated?.length && (
-        <HealthRegionsMap
-          infos={aggregated}
+      <div className="map-container">
+        {aggregated?.length && (
+          <HealthRegionsMap
+            infos={aggregated}
+            mapMetric={mapMetric}
+            zoomToRegion={zoomToRegion}
+            onMouseOverFeature={handleMouseOverFeature}
+          />
+        )}
+      </div>
+      <div className="control-container">
+        <HealthRegionMapControl
           mapMetric={mapMetric}
-          zoomToRegion={zoomToRegion}
-          onMouseOverFeature={handleMouseOverFeature}
+          handleMapMetricChange={handleMapMetricChange}
+          mouseOverInfo={mouseOverInfo}
         />
-      )}
-      <HealthRegionMapControl
-        mapMetric={mapMetric}
-        handleMapMetricChange={handleMapMetricChange}
-        mouseOverInfo={mouseOverInfo}
-      />
+      </div>
     </Wrapper>
   );
 };
@@ -110,6 +114,14 @@ const Wrapper = styled.div`
 
   height: 100%;
   width: 100%;
+
+  .map-container {
+    flex: 1;
+  }
+
+  .control-container {
+    flex: 0 0 24em;
+  }
 `;
 
 export default HealthRegionMapProvider;
